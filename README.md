@@ -1,4 +1,4 @@
-﻿# SkillNest (Freelancer Marketplace MVP+)
+﻿# SkillCentre (Freelancer Marketplace MVP+)
 
 Browser-based freelancer marketplace where:
 - You can sell your own services
