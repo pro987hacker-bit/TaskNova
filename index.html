@@ -1,0 +1,639 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillNest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20260405-1" />
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand-dot"></div>
+      <h1>SkillNest</h1>
+    </div>
+    <nav>
+      <button class="nav-btn" data-tab="marketplace">Marketplace</button>
+      <button class="nav-btn active" data-tab="explore">Explore Services</button>
+      <button class="nav-btn" data-tab="seller">Become Seller</button>
+      <button class="nav-btn" data-tab="dashboard">My Dashboard</button>
+      <button class="nav-btn" data-tab="admin">Your Earnings</button>
+    </nav>
+    <div class="filters top-filters">
+      <input id="search" type="search" placeholder="Search gigs: web, logo, SEO, ecommerce..." />
+      <select id="sortBy">
+        <option value="popular">Most Popular</option>
+        <option value="priceLow">Price: Low to High</option>
+        <option value="priceHigh">Price: High to Low</option>
+        <option value="rating">Highest Rated</option>
+      </select>
+    </div>
+    <div class="auth-actions">
+      <button id="loginBtn" class="auth-btn">Login</button>
+      <button id="signupBtn" class="auth-btn auth-btn-primary">Signup</button>
+      <span id="loggedInUser" class="user-chip hidden"></span>
+      <button id="logoutBtn" class="auth-btn hidden">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="auth" class="card auth-card">
+      <div class="section-title-row">
+        <h3>Login / Create Account</h3>
+        <span class="tag">Buyer + Seller + Owner Revenue</span>
+      </div>
+      <form id="authForm">
+        <input id="name" type="text" placeholder="Name" required />
+        <input id="email" type="email" placeholder="Email" required />
+        <select id="role">
+          <option value="buyer">Buyer</option>
+          <option value="seller">Seller</option>
+          <option value="both">Both</option>
+        </select>
+        <button type="submit">Continue</button>
+      </form>
+      <p id="authMessage"></p>
+    </section>
+
+    <section id="marketplace" class="tab">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Build Your Freelance Empire</p>
+          <h2>Advanced marketplace with reviews, payments, inbox chat, and withdrawals.</h2>
+          <p class="hero-copy">Let sellers create gigs, buyers place paid orders with package tiers, then manage conversations and payouts in one place.</p>
+          <div class="hero-actions">
+            <button id="ctaSellBtn" class="primary">Start Selling</button>
+            <span class="hero-user">Active account: <strong id="heroUserName">You (Owner)</strong></span>
+          </div>
+        </div>
+        <div class="hero-stats" id="heroStats"></div>
+      </section>
+
+      <section class="trust-strip">
+        <span>Popular:</span>
+        <button class="chip" data-cat="Logo">Logo Design</button>
+        <button class="chip" data-cat="Web">Website Development</button>
+        <button class="chip" data-cat="Video">Video Editing</button>
+        <button class="chip" data-cat="SEO">SEO</button>
+        <button class="chip" data-cat="Content">Content Writing</button>
+      </section>
+
+      <div class="list-item">Choose <strong>Explore Services</strong> to browse seller services.</div>
+
+      <section class="plans-box">
+        <h3>Choose Your Plan</h3>
+
+        <div class="plan-grid">
+          <article class="plan-column active" data-plan-card="premium">
+            <span class="plan-badge">Most Popular</span>
+            <h4>Premium</h4>
+            <p class="meta">Ideal for users needing better visibility and growth.</p>
+            <p class="plan-price">$100 / month</p>
+            <button class="plan-tab" data-plan="premium">Buy</button>
+            <p class="meta tiny">You can switch at any time</p>
+            <ul class="plan-feature-list">
+              <li>Access to a higher number of monthly bids</li>
+              <li>Improved job recommendations and project matching</li>
+              <li>Advanced bid performance analytics</li>
+              <li>Access to higher-value and premium projects</li>
+              <li>Ability to apply in more skill categories</li>
+              <li>Expanded portfolio visibility</li>
+              <li>Increased profile exposure compared to free users</li>
+              <li>Participation benefits in contests</li>
+              <li>Reward points and engagement system access</li>
+              <li>Better chances of winning competitive projects</li>
+            </ul>
+          </article>
+
+          <article class="plan-column" data-plan-card="pro">
+            <h4>Pro</h4>
+            <p class="meta">Advanced tools for scaling your business faster.</p>
+            <p class="plan-price">$500 / month</p>
+            <button class="plan-tab" data-plan="pro">Buy</button>
+            <p class="meta tiny">You can switch at any time</p>
+            <ul class="plan-feature-list">
+              <li>Significantly increased bid limits per month</li>
+              <li>Priority access to high-paying and exclusive projects</li>
+              <li>Advanced client targeting and engagement tools</li>
+              <li>Detailed analytics for bids and market performance</li>
+              <li>Faster payment withdrawal options</li>
+              <li>Access to confidential (NDA) projects</li>
+              <li>Direct communication features with clients (where available)</li>
+              <li>Unlimited project bookmarking</li>
+              <li>Enhanced invoicing and billing tools</li>
+              <li>Eligibility for top-tier freelancer programs</li>
+              <li>Better ranking and visibility in search results</li>
+              <li>Suitable for full-time professional freelancers and agencies</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="plan-card">
+          <strong id="planTitle">Premium Plan</strong>
+          <div class="meta" id="planPrice">$100.00 / month</div>
+          <div class="meta" id="planDescription">Better visibility and faster support.</div>
+
+          <div class="plan-payment">
+            <select id="planPaymentMethod">
+              <option value="">Select payment method</option>
+              <option value="Card">Credit/Debit Card</option>
+              <option value="PayPal">PayPal</option>
+              <option value="Bank Transfer">Bank Transfer</option>
+              <option value="Easypaisa">Easypaisa</option>
+              <option value="JazzCash">JazzCash</option>
+            </select>
+            <button id="planPayBtn" class="auth-btn auth-btn-primary">Pay Now</button>
+          </div>
+          <p id="planMessage" class="meta"></p>
+        </div>
+
+      </section>
+    </section>
+
+    <section id="explore" class="tab active">
+      <div id="serviceList" class="grid"></div>
+    </section>
+
+    <section id="seller" class="tab">
+      <section class="seller-hub">
+        <div class="seller-head">
+          <div>
+            <p class="seller-kicker">Seller Studio</p>
+            <h2>Service Control Center</h2>
+          </div>
+          <div class="seller-head-actions">
+            <label class="seller-switch">
+              <input id="sellerCustomSwitch" type="checkbox" checked />
+              <span class="seller-slider"></span>
+              <span>Custom Requests Enabled</span>
+            </label>
+            <button id="openCreateGigBtn" class="seller-create-btn">Create Service</button>
+          </div>
+        </div>
+
+        <div class="seller-tabs">
+          <button class="seller-tab-pill active">Live <span id="sellerLiveCount">0</span></button>
+          <button class="seller-tab-pill">Under Review</button>
+          <button class="seller-tab-pill">Needs Update</button>
+          <button class="seller-tab-pill">Hidden</button>
+          <button class="seller-tab-pill">Paused</button>
+        </div>
+
+        <div class="seller-table-card">
+          <div class="seller-table-head">
+            <h3>My Service Performance</h3>
+            <select id="sellerRange" class="seller-range">
+              <option>Last 30 Days</option>
+              <option>Last 90 Days</option>
+              <option>This Year</option>
+            </select>
+          </div>
+
+          <div class="seller-table-wrap">
+            <table class="seller-table">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Views</th>
+                  <th>Clicks</th>
+                  <th>Orders</th>
+                  <th>Conversion</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="sellerGigRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="sellerCreateFlow" class="seller-create-flow hidden">
+        <div class="overview-pro-banner">
+          <div class="overview-pro-content">
+            <span class="overview-pro-chip">Pro Insights</span>
+            <h4>Discover what serious buyers are actively searching for</h4>
+            <p>Use advanced demand signals, category trends, and performance intelligence to launch high-converting services with confidence.</p>
+            <button id="exploreProToolsBtn" class="overview-pro-link" type="button">Explore Pro Tools</button>
+          </div>
+          <div class="overview-pro-visual">
+            <span class="overview-pro-badge">Pro</span>
+            <div class="overview-pro-card">
+              <div class="overview-pro-bars">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="overview-pro-ring"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="seller-create-top">
+          <button id="closeCreateFlowBtn" class="seller-close-btn">Back to Dashboard</button>
+        </div>
+
+        <div class="seller-stepper">
+          <div id="sellerStepOverview" class="seller-step seller-step-nav active" data-step="overview">
+            <span>1</span>
+            <strong>Service Overview</strong>
+          </div>
+          <div class="seller-step-sep">›</div>
+          <div id="sellerStepPricing" class="seller-step seller-step-nav" data-step="pricing">
+            <span>2</span>
+            <strong>Pricing & Packages</strong>
+          </div>
+          <div class="seller-step-sep">›</div>
+          <div id="sellerStepDescription" class="seller-step seller-step-nav" data-step="description">
+            <span>3</span>
+            <strong>Description & FAQs</strong>
+          </div>
+          <div class="seller-step-sep">›</div>
+          <div id="sellerStepRequirements" class="seller-step seller-step-nav" data-step="requirements">
+            <span>4</span>
+            <strong>Client Requirements</strong>
+          </div>
+          <div class="seller-step-sep">›</div>
+          <div id="sellerStepGallery" class="seller-step seller-step-nav" data-step="gallery">
+            <span>5</span>
+            <strong>Gallery & Portfolio</strong>
+          </div>
+          <div class="seller-step-sep">›</div>
+          <div id="sellerStepPublish" class="seller-step seller-step-nav" data-step="publish">
+            <span>6</span>
+            <strong>Finalize & Publish</strong>
+          </div>
+        </div>
+
+        <div id="aiGuardBox" class="ai-guard hidden">
+          <strong>AI Quality Guard</strong>
+          <ul id="aiGuardList"></ul>
+        </div>
+
+        <section id="overviewStepPanel" class="overview-form-card">
+          <div class="overview-grid">
+            <div class="overview-label">
+              <h5>Service Headline</h5>
+              <p>Write a clear, search-friendly title that explains your offer professionally and accurately.</p>
+            </div>
+            <div>
+              <input id="ovTitle" type="text" maxlength="80" placeholder="e.g. I will design a conversion-focused landing page for your brand" />
+              <div class="overview-count"><span id="ovTitleCount">0</span> / 80</div>
+            </div>
+
+            <div class="overview-label">
+              <h5>Category Mapping</h5>
+              <p>Select the most relevant category and subcategory so buyers can discover your service correctly.</p>
+            </div>
+            <div>
+              <input id="ovCategorySearch" type="search" placeholder="Search category (e.g. web, logo, SEO, video, legal...)" />
+              <div class="overview-two-col" style="margin-top:10px;">
+              <select id="ovCategory">
+                <option value="">Choose category</option>
+              </select>
+              <select id="ovSubcategory">
+                <option value="">Choose subcategory</option>
+              </select>
+              </div>
+            </div>
+
+            <div class="overview-label">
+              <h5>Search Tags</h5>
+              <p>Add up to 5 relevant keywords (comma separated). These should match what real buyers search for.</p>
+            </div>
+            <div>
+              <input id="ovTags" type="text" placeholder="landing page, figma, responsive design, startup, conversion" />
+              <div id="ovTagChips" class="overview-tag-chips"></div>
+              <div class="overview-note">Press Enter to add each tag. Minimum 3 and maximum 5 tags required.</div>
+            </div>
+
+            <div class="overview-label">
+              <h5>Service Scope</h5>
+              <p>Describe your deliverables and quality standards so client expectations stay aligned.</p>
+            </div>
+            <div>
+              <textarea id="ovRequirements" rows="4" placeholder="Describe exactly what you will deliver, timeline assumptions, revision policy, and required client inputs."></textarea>
+            </div>
+          </div>
+
+          <div id="ovDetector" class="overview-detector hidden">
+            <strong>Validation & Compliance Check</strong>
+            <ul id="ovDetectorList"></ul>
+          </div>
+
+          <div class="overview-actions">
+            <button id="ovProceedBtn" type="button" disabled>Proceed to Pricing</button>
+          </div>
+        </section>
+
+        <section id="pricingStepPanel" class="overview-form-card hidden">
+          <div class="pricing-packages-card">
+            <h5>Packages</h5>
+            <div class="pricing-table-wrap">
+              <table class="pricing-table">
+                <thead>
+                  <tr>
+                    <th>Package Setup</th>
+                    <th>Basic</th>
+                    <th>Standard</th>
+                    <th>Premium</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Package Name</td>
+                    <td><input id="pkgBasicName" type="text" placeholder="Starter delivery" /></td>
+                    <td><input id="pkgStandardName" type="text" placeholder="Growth package" /></td>
+                    <td><input id="pkgPremiumName" type="text" placeholder="Scale package" /></td>
+                  </tr>
+                  <tr>
+                    <td>Package Details</td>
+                    <td><textarea id="pkgBasicDesc" rows="3" placeholder="Define scope and deliverables"></textarea></td>
+                    <td><textarea id="pkgStandardDesc" rows="3" placeholder="Define scope and deliverables"></textarea></td>
+                    <td><textarea id="pkgPremiumDesc" rows="3" placeholder="Define scope and deliverables"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>Delivery Time</td>
+                    <td><select id="pkgBasicDays"><option value="">Select</option><option>1 Day</option><option>2 Days</option><option>3 Days</option><option>5 Days</option><option>7 Days</option></select></td>
+                    <td><select id="pkgStandardDays"><option value="">Select</option><option>2 Days</option><option>3 Days</option><option>5 Days</option><option>7 Days</option><option>10 Days</option></select></td>
+                    <td><select id="pkgPremiumDays"><option value="">Select</option><option>3 Days</option><option>5 Days</option><option>7 Days</option><option>10 Days</option><option>14 Days</option></select></td>
+                  </tr>
+                  <tr>
+                    <td>Revision Rounds</td>
+                    <td><select><option value="">Select</option><option>1 Revision</option><option>2 Revisions</option><option>3 Revisions</option></select></td>
+                    <td><select><option value="">Select</option><option>2 Revisions</option><option>3 Revisions</option><option>5 Revisions</option></select></td>
+                    <td><select><option value="">Select</option><option>3 Revisions</option><option>5 Revisions</option><option>Unlimited</option></select></td>
+                  </tr>
+                  <tr>
+                    <td>Keyword Strategy</td>
+                    <td><input type="checkbox" /></td>
+                    <td><input type="checkbox" /></td>
+                    <td><input type="checkbox" /></td>
+                  </tr>
+                  <tr>
+                    <td>Competitor Analysis</td>
+                    <td><input type="checkbox" /></td>
+                    <td><input type="checkbox" /></td>
+                    <td><input type="checkbox" /></td>
+                  </tr>
+                  <tr>
+                    <td>Performance Report</td>
+                    <td><input type="checkbox" /></td>
+                    <td><input type="checkbox" /></td>
+                    <td><input type="checkbox" /></td>
+                  </tr>
+                  <tr>
+                    <td>Price (USD)</td>
+                    <td><input id="pkgBasicPrice" type="number" min="4.01" step="0.01" placeholder="$" /></td>
+                    <td><input id="pkgStandardPrice" type="number" min="4.01" step="0.01" placeholder="$" /></td>
+                    <td><input id="pkgPremiumPrice" type="number" min="4.01" step="0.01" placeholder="$" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="overview-actions">
+            <button id="pricingBackBtn" type="button" class="overview-secondary-btn">Back to Overview</button>
+            <button id="pricingNextBtn" type="button">Continue</button>
+          </div>
+        </section>
+
+        <section id="descriptionStepPanel" class="overview-form-card hidden">
+          <div class="overview-grid">
+            <div class="overview-label">
+              <h5>Service Description</h5>
+              <p>Explain your process, deliverables, quality promise, and what makes your service reliable.</p>
+            </div>
+            <div>
+              <textarea id="descMain" rows="6" placeholder="Write a detailed and professional service description..."></textarea>
+            </div>
+
+            <div class="overview-label">
+              <h5>Frequently Asked Questions</h5>
+              <p>Add practical FAQs that help buyers understand scope, timelines, and communication flow.</p>
+            </div>
+            <div>
+              <div id="faqList" class="faq-list"></div>
+              <button id="addFaqBtn" type="button" class="overview-secondary-btn">Add FAQ</button>
+            </div>
+          </div>
+
+          <div class="overview-actions">
+            <button id="descriptionBackBtn" type="button" class="overview-secondary-btn">Back to Pricing</button>
+            <button id="descriptionNextBtn" type="button">Continue</button>
+          </div>
+        </section>
+
+        <section id="requirementsStepPanel" class="overview-form-card hidden">
+          <div class="overview-grid">
+            <div class="overview-label">
+              <h5>Client Input Checklist</h5>
+              <p>Define what information buyers must share before order kickoff.</p>
+            </div>
+            <div>
+              <textarea id="reqChecklist" rows="9" placeholder="Example: brand name, target audience, reference links, preferred style, deadline priorities."></textarea>
+            </div>
+          </div>
+
+          <div class="overview-actions">
+            <button id="requirementsBackBtn" type="button" class="overview-secondary-btn">Back to Description</button>
+            <button id="requirementsNextBtn" type="button">Continue</button>
+          </div>
+        </section>
+
+        <section id="galleryStepPanel" class="overview-form-card hidden">
+          <div class="overview-grid">
+            <div class="overview-label">
+              <h5>Gallery & Portfolio</h5>
+              <p>Add your best sample media so buyers can evaluate quality instantly.</p>
+            </div>
+            <div>
+              <div class="gallery-upload-grid">
+                <label class="gallery-upload-box">
+                  <span>Primary Image (Card Cover)</span>
+                  <input id="galleryImage1" type="file" accept="image/*" />
+                </label>
+                <label class="gallery-upload-box">
+                  <span>Second Image</span>
+                  <input id="galleryImage2" type="file" accept="image/*" />
+                </label>
+                <label class="gallery-upload-box">
+                  <span>Portfolio Document (Optional)</span>
+                  <input id="galleryDoc" type="file" accept=".pdf,.doc,.docx,.txt" />
+                </label>
+              </div>
+              <div id="galleryPreview" class="gallery-preview"></div>
+            </div>
+          </div>
+          <div class="overview-actions">
+            <button id="galleryBackBtn" type="button" class="overview-secondary-btn">Back to Requirements</button>
+            <button id="galleryNextBtn" type="button">Continue</button>
+          </div>
+        </section>
+
+        <section id="publishStepPanel" class="overview-form-card hidden">
+          <div class="overview-grid">
+            <div class="overview-label">
+              <h5>Finalize & Publish</h5>
+              <p>Final review completed. You can now publish your service listing.</p>
+            </div>
+            <div>
+              <input id="publishConfirmTitle" type="text" placeholder="Service ready to publish" />
+            </div>
+          </div>
+          <div class="overview-actions">
+            <button id="publishBackBtn" type="button" class="overview-secondary-btn">Back to Gallery</button>
+            <button id="publishNowBtn" type="button">Publish Service</button>
+          </div>
+        </section>
+      </section>
+    </section>
+
+    <section id="dashboard" class="tab">
+      <h2>My Dashboard</h2>
+      <div class="stats" id="userStats"></div>
+
+      <h3>My Orders</h3>
+      <div id="myOrders" class="list"></div>
+
+      <h3>Inbox</h3>
+      <div id="inboxThreads" class="list"></div>
+
+      <h3>Withdrawals</h3>
+      <div id="withdrawalStats" class="stats"></div>
+      <form id="withdrawForm" class="card form-card withdraw-form">
+        <div class="two-col">
+          <input id="withdrawAmount" type="number" min="1" step="0.01" placeholder="Withdraw amount (USD)" required />
+          <select id="withdrawMethod" required>
+            <option value="">Select method</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Easypaisa">Easypaisa</option>
+            <option value="JazzCash">JazzCash</option>
+          </select>
+        </div>
+        <input id="withdrawAccount" type="text" placeholder="Account details (IBAN/email/phone)" required />
+        <button type="submit">Request Withdrawal</button>
+      </form>
+      <p id="withdrawMessage"></p>
+      <div id="myWithdrawals" class="list"></div>
+
+      <h3>My Services</h3>
+      <div id="myServices" class="list"></div>
+    </section>
+
+    <section id="admin" class="tab">
+      <h2>Platform Revenue (Your Profit)</h2>
+      <div class="stats" id="platformStats"></div>
+
+      <h3>Owner Commission Wallet</h3>
+      <div id="ownerWalletStats" class="stats"></div>
+      <form id="ownerWithdrawForm" class="card form-card withdraw-form">
+        <div class="two-col">
+          <input id="ownerWithdrawAmount" type="number" min="1" step="0.01" placeholder="Owner withdraw amount (USD)" required />
+          <select id="ownerWithdrawMethod" required>
+            <option value="">Select method</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Easypaisa">Easypaisa</option>
+            <option value="JazzCash">JazzCash</option>
+          </select>
+        </div>
+        <input id="ownerWithdrawAccount" type="text" placeholder="Owner account details (IBAN/email/phone)" required />
+        <button type="submit">Withdraw Commission</button>
+      </form>
+      <p id="ownerWithdrawMessage"></p>
+      <div id="ownerWithdrawals" class="list"></div>
+
+      <h3>Withdrawal Requests</h3>
+      <div id="withdrawalRequests" class="list"></div>
+
+      <h3>Payment Method Breakdown</h3>
+      <div id="paymentBreakdown" class="list"></div>
+
+      <h3>Recent Transactions</h3>
+      <div id="transactions" class="list"></div>
+
+      <h3>Latest Buyer Reviews</h3>
+      <div id="recentReviews" class="list"></div>
+    </section>
+  </main>
+
+  <div id="checkoutModal" class="modal hidden">
+    <div class="modal-panel">
+      <button class="modal-close" id="closeCheckout">x</button>
+      <h3>Checkout Order</h3>
+      <div id="checkoutServiceInfo" class="list-item"></div>
+      <form id="checkoutForm" class="modal-form">
+        <label>
+          Package
+          <select id="packageTier">
+            <option value="basic">Basic</option>
+            <option value="standard">Standard</option>
+            <option value="premium">Premium</option>
+          </select>
+        </label>
+        <label>
+          Payment Method
+          <select id="paymentMethod" required>
+            <option value="">Select payment method</option>
+            <option value="Card">Credit/Debit Card</option>
+            <option value="PayPal">PayPal</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+            <option value="Easypaisa">Easypaisa</option>
+            <option value="JazzCash">JazzCash</option>
+          </select>
+        </label>
+        <label>
+          Order Requirements
+          <textarea id="orderRequirements" rows="4" placeholder="Share details the seller needs to start your order..." required></textarea>
+        </label>
+        <div id="checkoutSummary" class="list-item"></div>
+        <button type="submit">Place Paid Order</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="chatModal" class="modal hidden">
+    <div class="modal-panel modal-chat">
+      <button class="modal-close" id="closeChat">x</button>
+      <h3>Order Chat</h3>
+      <div id="chatThreadMeta" class="list-item"></div>
+      <div id="chatMessages" class="chat-box"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" type="text" placeholder="Type message..." required />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <section id="planPaymentPage" class="plan-payment-page hidden">
+    <div class="plan-payment-shell">
+      <div class="plan-payment-head">
+        <div>
+          <p class="plan-payment-kicker">Secure Checkout</p>
+          <h3>Subscription Payment</h3>
+        </div>
+        <button id="planPaymentClose" class="plan-payment-close" type="button">Close</button>
+      </div>
+
+      <div id="planPaymentSummary" class="plan-payment-summary"></div>
+      <div id="planPaymentFields" class="plan-payment-fields"></div>
+      <p id="planPaymentMessage" class="meta"></p>
+
+      <div class="plan-payment-actions">
+        <button id="planPaymentCancel" type="button" class="auth-btn">Back</button>
+        <button id="planPaymentConfirm" type="button" class="auth-btn auth-btn-primary">Confirm Payment</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js?v=20260405-1"></script>
+</body>
+</html>
